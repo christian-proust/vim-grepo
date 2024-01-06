@@ -30,6 +30,8 @@ function! Grepo(...)
 
     while loop
         let start_pos = getcurpos()
+        " Go one character before in case the match is 1-width
+        execute "normal \<C-H>"
         if search(@/, 'eW')
             let end_pos = getcurpos()
             let line = getline(start_pos[1], end_pos[1])
